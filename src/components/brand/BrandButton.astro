@@ -1,0 +1,58 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'blood' | 'parchment' | 'gradient';
+type Width = 'fixed' | 'auto' | 'full';
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'class'> {
+  href?: string;
+  variant?: Variant;
+  width?: Width;
+  class?: string;
+  type?: 'button' | 'submit';
+}
+
+const {
+  href,
+  variant = 'blood',
+  width = 'fixed',
+  class: className,
+  type = 'submit',
+  ...rest
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+
+const variants: Record<Variant, string> = {
+  blood: 'border-brand-400 bg-burgundy text-cream hover:bg-brand-700',
+  parchment: 'border-parchment bg-parchment text-ink-base hover:bg-cream',
+  gradient:
+    'border-[rgba(156,35,37,0.7)] bg-linear-to-br from-burgundy to-brand-800 text-cream hover:from-brand-700',
+};
+
+const widths: Record<Width, string> = {
+  fixed: 'w-auto min-w-[173px] self-start',
+  auto: 'w-auto self-start',
+  full: 'w-full',
+};
+
+const sizing =
+  variant === 'gradient'
+    ? 'min-h-[42px] px-[19px] py-3 text-[14.7px] tracking-[0.111em]'
+    : 'min-h-[52px] px-[25px] py-4 text-[15.7px] tracking-[0.102em]';
+---
+
+<Tag
+  href={href}
+  type={href ? undefined : type}
+  class:list={[
+    'font-heading inline-flex items-center justify-center border text-center leading-none font-bold whitespace-nowrap uppercase no-underline transition-colors',
+    variants[variant],
+    widths[width],
+    sizing,
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+</Tag>

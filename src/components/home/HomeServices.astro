@@ -1,0 +1,76 @@
+---
+import BrandButton from '../brand/BrandButton.astro';
+import ParchmentSection from './ParchmentSection.astro';
+
+const services = [
+  {
+    numeral: 'I',
+    title: 'Social Strategy',
+    kicker: 'Plan and direction',
+    body: 'We build a clear social media plan around your audience, goals, platforms, content themes, and competitors, so every post has a job to do.',
+  },
+  {
+    numeral: 'II',
+    title: 'Content Creation',
+    kicker: 'Content people want to see',
+    body: 'From creative direction and design to copywriting and video, we create content that feels current, looks like your brand, and earns attention.',
+  },
+  {
+    numeral: 'III',
+    title: 'Paid Social',
+    kicker: 'Campaigns built to convert',
+    body: 'We plan and manage Meta, TikTok, and Pinterest campaigns designed to reach the right people, use your budget wisely, and drive measurable action.',
+  },
+  {
+    numeral: 'IV',
+    title: 'Analytics & Reporting',
+    kicker: 'Clear reporting, better decisions',
+    body: 'Each month, we show you what is working, what needs attention, and what we recommend next—without burying the story in vanity metrics.',
+  },
+];
+---
+
+<ParchmentSection id="services">
+  <div class="grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+    <div class="flex max-w-[34rem] flex-col gap-6">
+      <p
+        class="font-heading text-brand-700 text-[11.5px] leading-none font-bold tracking-[0.14em] uppercase"
+      >
+        What we do
+      </p>
+      <h2
+        class="font-heading text-[clamp(2.75rem,7vw,6.3rem)] leading-[0.71] font-medium tracking-[-0.065em]"
+      >
+        Social Media
+        <br />
+        <span class="text-accent-600 italic">That Looks</span>
+        <br />
+        <span class="text-burgundy font-semibold">Like You.</span>
+      </h2>
+      <p class="text-bark max-w-[495px] text-[1.2rem] leading-[1.45] font-medium">
+        We combine strategy, creative content, paid campaigns, and reporting to help your brand grow
+        on the platforms that matter.
+      </p>
+      <BrandButton href="/#contact" class="mt-1">Get in Touch</BrandButton>
+    </div>
+
+    <ol class="grid gap-x-[15px] gap-y-[21px] sm:grid-cols-2">
+      {
+        services.map((service) => (
+          <li class="flex flex-col gap-5 bg-[rgba(238,232,215,0.76)] px-6 pt-7 pb-8">
+            <span class="font-heading text-burgundy text-[1.55rem] leading-none italic">
+              {service.numeral}
+            </span>
+            <div class="flex flex-col gap-1.5">
+              <h3 class="font-heading text-[1.55rem] leading-none font-bold">{service.title}</h3>
+              <p class="font-heading text-[10.6px] leading-snug font-bold tracking-[0.1em] text-[#5b4828] uppercase">
+                {service.kicker}
+              </p>
+            </div>
+            <p class="text-bark text-[16.8px] leading-[1.45] font-medium">{service.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</ParchmentSection>

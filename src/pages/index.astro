@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeHero from '../components/home/HomeHero.astro';
+import HomeServices from '../components/home/HomeServices.astro';
+import HomeAbout from '../components/home/HomeAbout.astro';
+import HomeProcess from '../components/home/HomeProcess.astro';
+import HomeContact from '../components/home/HomeContact.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout description={site.description} headerOverlay>
+  <HomeHero />
+  <HomeServices />
+  <HomeAbout />
+  <HomeProcess />
+  <HomeContact />
+</BaseLayout>

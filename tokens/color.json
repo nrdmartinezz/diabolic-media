@@ -1,0 +1,59 @@
+{
+  "color": {
+    "brand": {
+      "50": { "$value": "#f8eceb", "$type": "color" },
+      "100": { "$value": "#edd4d1", "$type": "color" },
+      "200": { "$value": "#dbb0ab", "$type": "color" },
+      "300": { "$value": "#c48a84", "$type": "color" },
+      "400": { "$value": "#9e4a42", "$type": "color" },
+      "500": { "$value": "#8a2e2c", "$type": "color" },
+      "600": { "$value": "#6e1518", "$type": "color" },
+      "700": { "$value": "#5a1114", "$type": "color" },
+      "800": { "$value": "#440e12", "$type": "color" },
+      "900": { "$value": "#2c0c0e", "$type": "color" },
+      "950": { "$value": "#1a0809", "$type": "color" }
+    },
+    "accent": {
+      "400": { "$value": "#d2ba80", "$type": "color" },
+      "500": { "$value": "#b8a77e", "$type": "color" },
+      "600": { "$value": "#725d30", "$type": "color" }
+    },
+    "parchment": { "$value": "#ddd4bb", "$type": "color" },
+    "cream": { "$value": "#eee8d7", "$type": "color" },
+    "night": { "$value": "#211914", "$type": "color" },
+    "burgundy": { "$value": "#6e1518", "$type": "color" },
+    "rose": { "$value": "#ca7774", "$type": "color" },
+    "bark": { "$value": "#3d352d", "$type": "color" },
+    "neutral": {
+      "0": { "$value": "#ffffff", "$type": "color" },
+      "50": { "$value": "#f7f8fa", "$type": "color" },
+      "100": { "$value": "#eef0f4", "$type": "color" },
+      "200": { "$value": "#dde1e8", "$type": "color" },
+      "300": { "$value": "#c2c8d3", "$type": "color" },
+      "400": { "$value": "#98a1b1", "$type": "color" },
+      "500": { "$value": "#6f7889", "$type": "color" },
+      "600": { "$value": "#555d6d", "$type": "color" },
+      "700": { "$value": "#414857", "$type": "color" },
+      "800": { "$value": "#2b303c", "$type": "color" },
+      "900": { "$value": "#1a1e27", "$type": "color" },
+      "950": { "$value": "#0f1218", "$type": "color" }
+    },
+    "surface": {
+      "base": { "$value": "#ddd4bb", "$type": "color" },
+      "muted": { "$value": "#eee8d7", "$type": "color" },
+      "inverse": { "$value": "#211914", "$type": "color" },
+      "brand": { "$value": "{color.brand.600}", "$type": "color" }
+    },
+    "ink": {
+      "base": { "$value": "#18130f", "$type": "color" },
+      "muted": { "$value": "#3d352d", "$type": "color" },
+      "inverse": { "$value": "#eee8d7", "$type": "color" },
+      "brand": { "$value": "{color.brand.600}", "$type": "color" }
+    },
+    "line": {
+      "base": { "$value": "#c4b89a", "$type": "color" },
+      "strong": { "$value": "#8a7b62", "$type": "color" }
+    },
+    "focus": { "$value": "#d2ba80", "$type": "color" }
+  }
+}

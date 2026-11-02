@@ -1,0 +1,35 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+}
+
+const { id, class: className } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={[
+    'bg-parchment text-ink-base relative scroll-mt-28 overflow-hidden py-20 lg:py-36',
+    className,
+  ]}
+>
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(64,53,33,0.05)_16%,transparent_65%),linear-gradient(180deg,rgba(255,255,255,0.2),rgba(189,173,136,0.1))]"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-x-6 top-[18px] border-t border-[rgba(35,31,25,0.56)] lg:inset-x-30"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-x-6 bottom-[18px] border-t border-[rgba(35,31,25,0.56)] lg:inset-x-30"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="relative mx-auto w-full max-w-[1200px] px-6 xl:px-0">
+    <slot />
+  </div>
+</section>

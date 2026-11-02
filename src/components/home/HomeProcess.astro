@@ -1,0 +1,71 @@
+---
+import BrandButton from '../brand/BrandButton.astro';
+import ParchmentSection from './ParchmentSection.astro';
+
+const phases = [
+  {
+    phase: 'Phase I',
+    title: 'Discovery',
+    body: 'We begin by learning about your brand, audience, goals, and the social media landscape around you.',
+  },
+  {
+    phase: 'Phase II',
+    title: 'Strategy',
+    body: 'We turn those insights into a practical plan for content, campaigns, platforms, and measurement.',
+  },
+  {
+    phase: 'Phase III',
+    title: 'Create & Publish',
+    body: 'We create, review, and schedule content that stays true to your brand and ready for the moment.',
+  },
+  {
+    phase: 'Phase IV',
+    title: 'Measure & Improve',
+    body: 'Each month, we review performance, share clear reporting, and improve the plan based on what the data tells us.',
+  },
+];
+---
+
+<ParchmentSection id="work">
+  <div class="grid items-start gap-14 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:gap-28">
+    <div class="flex max-w-[24rem] flex-col gap-6">
+      <p
+        class="font-heading text-brand-700 text-[11.5px] leading-none font-bold tracking-[0.14em] uppercase"
+      >
+        How we work
+      </p>
+      <h2
+        class="font-heading text-[clamp(2.75rem,7vw,6.3rem)] leading-[0.71] font-medium tracking-[-0.065em]"
+      >
+        A Clear
+        <br />
+        <span class="text-accent-600 italic">Social Media</span>
+        <br />
+        <span class="text-burgundy font-semibold">Process.</span>
+      </h2>
+      <BrandButton href="/#contact" class="mt-2">Get in Touch</BrandButton>
+    </div>
+
+    <ol class="relative flex flex-col">
+      <span class="absolute top-2 bottom-2 left-5 w-px bg-[rgba(35,31,25,0.56)]" aria-hidden="true"
+      ></span>
+      {
+        phases.map((item, index) => (
+          <li class:list={['relative pl-16', index < phases.length - 1 && 'pb-12']}>
+            <span
+              class="bg-parchment border-burgundy absolute top-[5px] left-5 size-10 -translate-x-1/2 rounded-full border shadow-[0_0_0_5px_#ddd4bb]"
+              aria-hidden="true"
+            />
+            <p class="font-heading text-brand-700 text-[11.5px] leading-none font-bold tracking-[0.14em] uppercase">
+              {item.phase}
+            </p>
+            <h3 class="font-heading mt-2 text-[2rem] leading-[0.85] font-bold">{item.title}</h3>
+            <p class="text-bark mt-2 max-w-[470px] text-[17.9px] leading-[1.46] font-medium">
+              {item.body}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</ParchmentSection>

@@ -1,5 +1,8 @@
-dist
 node_modules
-.git
-*.min.js
-*.min.css
+dist
+.astro
+src/styles/theme.css
+package-lock.json
+
+# Planning docs are hand-formatted; leave them alone.
+.github/prompts

@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import DarkTexture from '../brand/DarkTexture.astro';
+import BrandButton from '../brand/BrandButton.astro';
+import heroArt from '../../assets/home/hero-engraving.png';
+---
+
+<section class="text-cream relative overflow-hidden">
+  <DarkTexture bleed="hero" />
+  <div
+    class="relative mx-auto grid w-full max-w-[1440px] items-center gap-12 px-6 pt-36 pb-16 lg:grid-cols-2 lg:px-16 lg:pt-[165px] lg:pb-12"
+  >
+    <div class="flex max-w-[640px] flex-col gap-6 lg:py-8 lg:pl-8">
+      <p
+        class="font-heading text-rose text-[10.2px] leading-none font-bold tracking-[0.16em] uppercase"
+      >
+        Social media management
+      </p>
+
+      <h1
+        class="font-heading text-cream text-[clamp(3.25rem,8.89vw,8rem)] leading-[0.76] font-medium tracking-[-0.054em] [text-shadow:0_2px_18px_rgba(0,0,0,0.38)]"
+      >
+        Thy audience
+        <br />
+        awaits.
+        <span class="text-accent-400 mt-2 block font-normal italic">We summon them.</span>
+      </h1>
+
+      <div class="flex w-full max-w-[535px] items-center gap-3 pt-1" aria-hidden="true">
+        <span class="to-accent-400 h-px flex-1 bg-linear-to-r from-transparent"></span>
+        <span class="text-accent-400 text-[12.8px]">✦</span>
+        <span class="from-accent-400 h-px flex-1 bg-linear-to-r to-transparent"></span>
+      </div>
+
+      <p
+        class="max-w-[470px] text-[clamp(1.05rem,1.4vw,1.27rem)] leading-[1.52] text-[rgba(246,237,216,0.94)] [text-shadow:0_1px_12px_rgba(0,0,0,0.52)]"
+      >
+        Your brand deserves to be feared. Strategy, content, paid social, and reporting — shaped
+        with a singular visual point of view.
+      </p>
+
+      <div class="flex flex-wrap gap-3.5 pt-2">
+        <BrandButton href="/#contact">Get in Touch</BrandButton>
+        <BrandButton href="/#services" variant="parchment" width="auto">Our Services</BrandButton>
+      </div>
+    </div>
+
+    <div class="flex justify-center lg:justify-end lg:py-8 lg:pr-6">
+      <figure class="w-full max-w-[366px] p-3">
+        <div class="border border-[rgba(52,41,25,0.48)]">
+          <Image
+            src={heroArt}
+            alt="Antique engraving of a horned, winged guardian framed by thorned roses and Gothic architecture"
+            widths={[366, 732, 1100]}
+            sizes="(min-width: 1024px) 366px, 80vw"
+            loading="eager"
+            fetchpriority="high"
+            class="aspect-3/4 h-auto w-full object-contain"
+          />
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>

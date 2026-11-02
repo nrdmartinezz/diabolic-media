@@ -1,0 +1,57 @@
+---
+import Logo from '../brand/Logo.astro';
+import BrandButton from '../brand/BrandButton.astro';
+import DarkTexture from '../brand/DarkTexture.astro';
+import { navigation } from '../../config/navigation';
+
+const year = new Date().getFullYear();
+const links = navigation.footer[0]?.links ?? [];
+---
+
+<footer
+  class="text-cream relative overflow-hidden px-5 pt-16 pb-20 lg:px-[21px] lg:pt-[72px] lg:pb-16"
+>
+  <DarkTexture bleed="footer" />
+  <div
+    class="pointer-events-none absolute inset-[21px] border border-[rgba(202,180,131,0.4)] shadow-[inset_0_0_0_7px_rgba(38,24,14,0.23),inset_0_0_0_8px_rgba(202,180,131,0.16)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto flex w-full max-w-[1200px] flex-col">
+    <div
+      class="flex items-center justify-between gap-4 border-b border-[rgba(212,190,145,0.42)] bg-linear-to-b from-[rgba(24,17,12,0.18)] to-transparent py-4"
+    >
+      <a href="/" class="shrink-0 no-underline" aria-label="Diabolic Media home">
+        <Logo />
+      </a>
+      {
+        navigation.cta && (
+          <BrandButton href={navigation.cta.href} variant="gradient" width="auto">
+            {navigation.cta.label}
+          </BrandButton>
+        )
+      }
+    </div>
+
+    <div
+      class="font-heading flex flex-col gap-6 pt-6 text-[12px] tracking-[0.1em] text-[rgba(246,237,216,0.76)] uppercase lg:flex-row lg:items-start lg:justify-between"
+    >
+      <nav aria-label="Footer">
+        <ul class="flex flex-wrap gap-x-5 gap-y-3">
+          {
+            links.map((link) => (
+              <li>
+                <a href={link.href} class="hover:text-cream no-underline">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <p class="text-[11px]">&copy; {year} Diabolic Media. All rights reserved.</p>
+      <p>Clear strategy. Distinctive presence.</p>
+    </div>
+  </div>
+</footer>

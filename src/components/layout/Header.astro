@@ -1,0 +1,133 @@
+---
+/**
+ * Site header. Overlay mode sits on the homepage hero; other pages get a solid
+ * night bar so the wordmark stays readable.
+ */
+import Logo from '../brand/Logo.astro';
+import BrandButton from '../brand/BrandButton.astro';
+import MobileNav from './MobileNav.astro';
+import { navigation } from '../../config/navigation';
+
+export type HeaderSticky = 'static' | 'sticky' | 'shrink' | 'hide-on-scroll';
+
+interface Props {
+  sticky?: HeaderSticky;
+  overlay?: boolean;
+}
+
+const { sticky = 'sticky', overlay = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const linkClass =
+  'font-heading text-[10.2px] leading-none tracking-[0.16em] text-cream/75 uppercase no-underline transition-colors hover:text-cream';
+---
+
+<header
+  data-sticky={overlay ? 'overlay' : sticky}
+  class:list={['z-50 w-full', overlay ? 'fixed inset-x-0 top-0' : 'bg-night sticky top-0']}
+>
+  <div
+    class:list={[
+      'mx-auto flex h-[72px] w-full max-w-[1200px] items-center gap-4 border-b border-[rgba(212,190,145,0.42)] bg-linear-to-b from-[rgba(24,17,12,0.18)] to-transparent px-5 lg:h-[102px] xl:px-0',
+      !overlay && 'bg-night',
+    ]}
+  >
+    <a href="/" class="shrink-0 no-underline" aria-label="Diabolic Media home">
+      <Logo />
+    </a>
+
+    <nav aria-label="Primary" class="hidden flex-1 justify-center lg:flex">
+      <ul class="flex items-center gap-10">
+        {
+          navigation.primary.map((item) => (
+            <li>
+              <a href={item.href ?? '/'} class={linkClass}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    {
+      navigation.cta && (
+        <BrandButton
+          href={navigation.cta.href}
+          variant="gradient"
+          width="auto"
+          class="max-lg:hidden"
+        >
+          {navigation.cta.label}
+        </BrandButton>
+      )
+    }
+
+    <MobileNav currentPath={currentPath} />
+  </div>
+</header>
+
+<style>
+  header[data-sticky='overlay'] {
+    transition: background-color 150ms ease;
+  }
+
+  header[data-sticky='overlay'][data-scrolled='true'] {
+    background-color: var(--color-night);
+  }
+
+  header[data-hidden='true'] {
+    transform: translateY(-100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    header[data-sticky='overlay'] {
+      transition: none;
+    }
+
+    header[data-hidden='true'] {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('header[data-sticky]');
+
+  if (header) {
+    const mode = header.dataset.sticky;
+
+    if (mode === 'overlay' || mode === 'shrink' || mode === 'hide-on-scroll') {
+      let lastY = window.scrollY;
+      let ticking = false;
+
+      const update = () => {
+        const y = window.scrollY;
+        header.dataset.scrolled = String(y > 8);
+
+        if (mode === 'hide-on-scroll') {
+          const navOpen =
+            document.querySelector('#nav-toggle')?.getAttribute('aria-expanded') === 'true' ||
+            document.querySelector('.mega-item[data-open="true"]') !== null;
+          header.dataset.hidden = String(!navOpen && y > lastY && y > 120);
+        }
+
+        lastY = y;
+        ticking = false;
+      };
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+          }
+        },
+        { passive: true },
+      );
+
+      update();
+    }
+  }
+</script>
