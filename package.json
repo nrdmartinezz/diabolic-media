@@ -12,6 +12,7 @@
     "prebuild": "node scripts/build-tokens.mjs",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy": "npm run build && npx -y firebase-tools@latest deploy --only functions,hosting",
     "preverify": "node scripts/build-tokens.mjs",
     "verify": "astro check && prettier --check .",
     "format": "prettier --write .",
