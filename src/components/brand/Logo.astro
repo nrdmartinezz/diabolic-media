@@ -3,9 +3,11 @@ import logo from '../../assets/home/logo.png';
 
 interface Props {
   class?: string;
+  /** Knock out the plate so a textured ground shows through. Off when the bar matches the plate. */
+  blend?: boolean;
 }
 
-const { class: className } = Astro.props;
+const { class: className, blend = true } = Astro.props;
 ---
 
 <span
@@ -19,6 +21,9 @@ const { class: className } = Astro.props;
     alt=""
     width={logo.width}
     height={logo.height}
-    class="absolute top-[-197.8%] left-[-27.6%] h-[498%] w-[154.7%] max-w-none mix-blend-screen"
+    class:list={[
+      'absolute top-[-197.8%] left-[-27.6%] h-[498%] w-[154.7%] max-w-none',
+      blend && 'mix-blend-screen',
+    ]}
   />
 </span>

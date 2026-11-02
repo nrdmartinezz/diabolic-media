@@ -1,7 +1,6 @@
 ---
 /**
- * Site header. Overlay mode sits on the homepage hero; other pages get a solid
- * night bar so the wordmark stays readable.
+ * Site header. The bar matches the wordmark plate so the logo has no visible box.
  */
 import Logo from '../brand/Logo.astro';
 import BrandButton from '../brand/BrandButton.astro';
@@ -24,16 +23,16 @@ const linkClass =
 
 <header
   data-sticky={overlay ? 'overlay' : sticky}
-  class:list={['z-50 w-full', overlay ? 'fixed inset-x-0 top-0' : 'bg-night sticky top-0']}
+  class:list={[
+    'z-50 w-full border-b border-[rgba(212,190,145,0.42)] bg-[#181818]',
+    overlay ? 'fixed inset-x-0 top-0' : 'sticky top-0',
+  ]}
 >
   <div
-    class:list={[
-      'mx-auto flex h-[72px] w-full max-w-[1200px] items-center gap-4 border-b border-[rgba(212,190,145,0.42)] bg-linear-to-b from-[rgba(24,17,12,0.18)] to-transparent px-5 lg:h-[102px] xl:px-0',
-      !overlay && 'bg-night',
-    ]}
+    class="mx-auto flex h-[72px] w-full max-w-[1200px] items-center gap-4 px-5 lg:h-[102px] xl:px-0"
   >
     <a href="/" class="shrink-0 no-underline" aria-label="Diabolic Media home">
-      <Logo />
+      <Logo blend={false} />
     </a>
 
     <nav aria-label="Primary" class="hidden flex-1 justify-center lg:flex">
@@ -52,14 +51,11 @@ const linkClass =
 
     {
       navigation.cta && (
-        <BrandButton
-          href={navigation.cta.href}
-          variant="gradient"
-          width="auto"
-          class="max-lg:hidden"
-        >
-          {navigation.cta.label}
-        </BrandButton>
+        <div class="flex items-center max-lg:hidden">
+          <BrandButton href={navigation.cta.href} variant="gradient" width="auto">
+            {navigation.cta.label}
+          </BrandButton>
+        </div>
       )
     }
 
@@ -70,10 +66,6 @@ const linkClass =
 <style>
   header[data-sticky='overlay'] {
     transition: background-color 150ms ease;
-  }
-
-  header[data-sticky='overlay'][data-scrolled='true'] {
-    background-color: var(--color-night);
   }
 
   header[data-hidden='true'] {
