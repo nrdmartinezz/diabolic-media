@@ -53,7 +53,7 @@ Copy `functions/.env.example` to `functions/.env` and fill it in. Do not commit 
 Store the mailbox password as a secret, not in `.env`:
 
 ```bash
-npx -y firebase-tools@latest functions:secrets:set SMTP_PASS
+npx -y firebase-tools@latest functions:secrets:set SMTP_PASS --project diabolic-media
 ```
 
 For local emulators, put the same value in `functions/.secret.local`:
@@ -69,7 +69,7 @@ Gmail needs an [app password](https://myaccount.google.com/apppasswords) and `sm
 The function expects `RECAPTCHA_SECRET` because it is bound at deploy time. Set it to `off` until you have a key pair. To turn the check on, store the real secret and set `recaptchaSiteKey` in `src/config/site.ts`:
 
 ```bash
-npx -y firebase-tools@latest functions:secrets:set RECAPTCHA_SECRET
+npx -y firebase-tools@latest functions:secrets:set RECAPTCHA_SECRET --project diabolic-media
 ```
 
 ## Deploy
@@ -78,7 +78,7 @@ Hosting serves `dist/`. The rewrite in `firebase.json` sends `/api/submit` and `
 
 ```bash
 npm run build
-npx -y firebase-tools@latest deploy --only functions,hosting
+npx -y firebase-tools@latest deploy --project diabolic-media --only functions,hosting
 ```
 
 The function build runs before deploy (`tsc` in `functions/`).
