@@ -23,6 +23,8 @@ jobs:
 
       - run: npm ci
 
+      - run: npm ci --prefix functions
+
       # Runs the token build via preverify, so a missing theme.css fails here
       # rather than mysteriously later.
       - run: npm run verify
