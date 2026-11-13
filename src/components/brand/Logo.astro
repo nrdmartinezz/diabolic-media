@@ -1,29 +1,17 @@
 ---
-import logo from '../../assets/home/logo.png';
+import logo from '../../assets/home/diabolic_logo.png';
 
 interface Props {
   class?: string;
-  /** Knock out the plate so a textured ground shows through. Off when the bar matches the plate. */
-  blend?: boolean;
 }
 
-const { class: className, blend = true } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<span
-  class:list={[
-    'relative block h-[34px] w-[192px] overflow-hidden sm:h-[44px] sm:w-[248px]',
-    className,
-  ]}
->
-  <img
-    src={logo.src}
-    alt=""
-    width={logo.width}
-    height={logo.height}
-    class:list={[
-      'absolute top-[-197.8%] left-[-27.6%] h-[498%] w-[154.7%] max-w-none',
-      blend && 'mix-blend-screen',
-    ]}
-  />
-</span>
+<img
+  src={logo.src}
+  alt=""
+  width={logo.width}
+  height={logo.height}
+  class:list={['block h-[34px] w-auto sm:h-[44px]', className]}
+/>

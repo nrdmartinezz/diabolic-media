@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
 
 concurrency:
@@ -22,6 +22,8 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - run: npm ci --prefix functions
 
       # Runs the token build via preverify, so a missing theme.css fails here
       # rather than mysteriously later.

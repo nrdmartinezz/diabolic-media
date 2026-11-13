@@ -92,7 +92,7 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  url: 'https://example.com',
+  url: 'https://diabolicsocial.com',
   name: 'Diabolic Media',
   legalName: 'Diabolic Media',
   tagline: 'Thy audience awaits. We summon them.',

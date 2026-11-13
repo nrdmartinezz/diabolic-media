@@ -21,7 +21,7 @@ until a project needs one.
 | `astro.config.mjs` → `site`                     | Production origin, no trailing slash                     | required   |
 | `site.ts` → `formEndpoint` / `recaptchaSiteKey` | PHP form handler + reCAPTCHA v3 site key                 | optional   |
 | `site.ts` → `analytics` / `verification`        | Per-platform IDs — blank means that vendor ships nothing | optional   |
-| `.github/workflows/deploy.yml`                  | FTP host/path secrets                                    | to publish |
+| `.github/workflows/deploy.yml`                  | Firebase deploy on push to `master`                      | to publish |
 | `_templates/collection/`                        | Copy only if the site needs a blog or similar            | optional   |
 
 ## Commands
@@ -46,7 +46,7 @@ Build the style guide into a production bundle with `STYLEGUIDE=1 npm run build`
 | `docs/RESPONSIVE-RULES.md`    | Desktop-first defaults for tablet and mobile        |
 | `docs/ADDING-A-COLLECTION.md` | Adding a blog or similar, if the project needs one  |
 | `docs/FORMS-AND-EMAIL.md`     | PHP form handler, reCAPTCHA, mail config, templates |
-| `docs/HOSTING.md`             | cPanel setup, deploy secrets, log analytics         |
+| `docs/HOSTING.md`             | Firebase Hosting, GitHub deploy, log analytics      |
 | `docs/DESIGNER-BRIEF.md`      | Hand to a designer when Figma is involved           |
 
 ## Theming

@@ -3,9 +3,17 @@
 Production is Firebase Hosting. The static site is `dist/`. Form mail is the
 `submit` Cloud Function, reached at `/api/submit/` — see `docs/FORMS-AND-EMAIL.md`.
 
+Pushes to `master` run `.github/workflows/deploy.yml`: verify, build, then
+`firebase deploy` of Hosting and Functions. GitHub authenticates with Workload
+Identity Federation as `github-deploy@diabolic-media.iam.gserviceaccount.com`.
+Mail settings for that project live in `functions/.env.diabolic-media`. The SMTP
+password and reCAPTCHA secret stay in Secret Manager and are not in the repo.
+
+Manual fallback:
+
 ```bash
 npm run build
-npx -y firebase-tools@latest deploy --only functions,hosting
+npx -y firebase-tools@latest deploy --project diabolic-media --only functions,hosting
 ```
 
 The notes below are the previous cPanel deploy path. They do not apply on Firebase.
@@ -48,11 +56,8 @@ the same page.
 
 ## Deploying
 
-`.github/workflows/deploy.yml` runs on every push to `main`: install → `verify`
-→ `build` → FTP upload of `dist/`. The `verify` gate means a type error or
-malformed frontmatter fails in CI instead of shipping.
-
-Manual fallback: `npm run build` and upload the contents of `dist/`.
+Production deploys are the Firebase workflow described at the top of this file.
+The cPanel FTP job is no longer used.
 
 ## What `.htaccess` does
 
