@@ -1,11 +1,5 @@
 ---
 import texture from '../../assets/home/texture.jpg';
-
-interface Props {
-  bleed?: 'hero' | 'band' | 'footer';
-}
-
-const { bleed = 'band' } = Astro.props;
 ---
 
 <div class="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -15,12 +9,7 @@ const { bleed = 'band' } = Astro.props;
     alt=""
     width={texture.width}
     height={texture.height}
-    class:list={[
-      'absolute max-w-none',
-      bleed === 'hero' && 'inset-y-0 left-[-11.8%] h-full w-[123.6%] object-cover',
-      bleed === 'band' && 'inset-y-0 left-[-4.98%] h-full w-[109.96%] object-cover',
-      bleed === 'footer' && 'top-[-139.12%] left-0 h-[324.39%] w-full object-cover',
-    ]}
+    class="absolute inset-0 h-full w-full max-w-none object-none object-center"
   />
   <div
     class="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,11,8,0.24)_0%,rgba(17,11,8,0)_31%,rgba(17,11,8,0)_68%,rgba(17,11,8,0.25)_100%)]"
